@@ -1,13 +1,13 @@
 import React from 'react'
-import MovieList from '../Movies/MovieList'
+import {MovieList} from '../Movies/MovieList'
 import {connect} from 'react-redux'
-import {getFavoritesMoviesThunk} from '../../redux/AC/index'
+import {getFavoritesMoviesThunk} from '../../redux/thunk'
 
 class Watchlist extends React.Component {
 
     componentDidMount() {
-        this.props.getFavoritesMoviesThunk(this.props.favorites)
-    }
+          this.props.getFavoritesMoviesThunk(this.props.favorites);
+      }
 
     render() {
 
@@ -15,8 +15,10 @@ class Watchlist extends React.Component {
 
         if (!loaded) return <h1>Loading...</h1>
 
+        if(!favoritesMovies.length) return null
+
         return (
-            <MovieList films={favoritesMovies} loaded={loaded}/>
+            <MovieList listName="watchlist" films={favoritesMovies} loaded={loaded}/>
         )
     }
 }

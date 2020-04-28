@@ -7,6 +7,7 @@ import { store } from './redux/store'
 import MovieList from './components/Movies/MovieList'
 import MoreInfoMovie from './components/Movies/MoreInfoMovie'
 import Watchlist from './components/Watchlist/Watchlist'
+import { WatchlistButton } from './components/Watchlist/WatchlistButton'
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
         <div className='main'>
 
             <Route path='/' component={Search} />
+            <WatchlistButton />
             <Route path='/movies' component={MovieList} exact />
             <Route path='/movies/:filmID' component={MoreInfoMovie} exact />
-            <Watchlist />
+            <Route path='/watchlist' component={Watchlist} exact />
+
+            {/* <Watchlist /> */}
 
         </div>
       </Provider>

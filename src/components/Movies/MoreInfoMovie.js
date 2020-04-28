@@ -1,7 +1,6 @@
 import React from 'react'
-import { getFilm } from '../../redux/AC/index'
+import { getFilmThunk } from '../../redux/thunk'
 import { connect } from 'react-redux'
-import imdb from './imdb.png'
 import AddMovieButton from './AddMovieButton'
 import DeleteMovieButton from './DeleteMovieButton'
 
@@ -13,7 +12,7 @@ class MoreInfoMovie extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getFilm(this.state.filmID)
+        this.props.getFilmThunk(this.state.filmID)
     }
 
 
@@ -35,7 +34,7 @@ class MoreInfoMovie extends React.Component {
                 <span className='movie-more__genre'>{Year}, {Genre}</span>
                 <div className='movie-more__details'>
                     <div className='movie-more__rating'>
-                        <img src={imdb} alt='rating' className='movie-more__rating-img' />
+                        <img src='/img/imdb.png' alt='rating' className='movie-more__rating-img' />
                         <p>{imdbRating}</p>
                     </div>
                     <div className='movie-more__btn'>
@@ -58,4 +57,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getFilm })(MoreInfoMovie)
+export default connect(mapStateToProps, { getFilmThunk })(MoreInfoMovie)

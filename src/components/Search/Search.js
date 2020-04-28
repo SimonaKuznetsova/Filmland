@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import './Search.css'
-import { getFilms } from '../../redux/AC/index'
-import search from './search.png'
+import { getFilmsThunk } from '../../redux/thunk'
+import {changeSearchTitle} from '../../redux/AC'
+import SearchIcon from '../../icons/Search'
 
 class Search extends Component {
     state = {
@@ -17,7 +18,8 @@ class Search extends Component {
     }
 
     onSearchFilmsClick = () => {
-        this.props.getFilms(this.state.title)
+        return (this.props.getFilmsThunk(this.state.title),
+        this.props.changeSearchTitle(this.state.title))
     }
     
     render() {
@@ -27,13 +29,14 @@ class Search extends Component {
                     placeholder='What do you want to see?'
                     onChange={this.onValueChange} />
 
-                <NavLink to='/movies'><button onClick={this.onSearchFilmsClick}><img src={search}/></button></NavLink>
+                <NavLink to='/movies'><button onClick={this.onSearchFilmsClick}><SearchIcon/></button></NavLink>
             </div>
         )
     }
 }
 
 export default connect(null, {
-    getFilms
+    getFilmsThunk,
+    changeSearchTitle
 })(Search)
 
