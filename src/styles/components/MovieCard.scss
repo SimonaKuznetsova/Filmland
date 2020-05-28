@@ -1,0 +1,30 @@
+.movie-card {
+    margin-bottom: 40px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__link {
+        text-decoration: none;
+        color: white;
+    }
+
+    &__poster {
+        margin-bottom: 10px;
+    }
+
+    &__poster img {
+        width: 200px;
+        height: 300px;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+
+    &__text {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        color: rgb(126, 126, 126);
+    }
+}

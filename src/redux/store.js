@@ -1,11 +1,28 @@
-import {createStore, applyMiddleware} from 'redux'
-import {reducer} from './reducer/index'
-import logger from './Middlewares/logger'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, compose, applyMiddleware } from "redux";
+import { reducer } from 'redux/reducer';
+import createSagaMiddleware from 'redux-saga';
+import  rootSaga  from 'redux/saga'
 
-const middlewares = applyMiddleware( thunkMiddleware, logger)
 
-export const store = createStore(reducer, middlewares)
+const sagaMiddleware = createSagaMiddleware()
 
-window.store = store;
+const middlewares = [
+  applyMiddleware(sagaMiddleware)
+];
 
+// export const store = createStore(reducer, middlewares)
+
+export const store =
+  process.env.NODE_ENV === "production"
+    ? createStore(reducer, {}, compose(...middlewares))
+    : createStore(
+        reducer,
+        {},
+        compose(
+          ...middlewares,
+          window.__REDUX_DEVTOOLS_EXTENSION__ &&
+            window.__REDUX_DEVTOOLS_EXTENSION__()
+        )
+      );
+
+      sagaMiddleware.run(rootSaga)
