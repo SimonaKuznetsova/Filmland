@@ -8,16 +8,33 @@
 
     padding: 8px 10px;
 
+    border: none;
+
     transition: 0.4s all ease;
 
     text-decoration: none;
     color: white;
     font-size: 17px;
+    text-align: center;
 
     cursor: pointer;
 
     &_home {
         align-self: center;
+    }
+
+    &_watch {
+        width: 160px;
+    }
+}
+
+@media (max-width: 767px) {
+    .btn {
+        font-size: 14px;
+
+        &_watch {
+            width: 90px;
+        }
     }
 }
 
@@ -29,4 +46,15 @@
 
 .btn:active {
     transform: scale(0.9)
+}
+
+@media (max-width: 576px) {
+    .btn:hover {
+        background-color: rgba(255, 255, 255, 0);
+        color: white;
+    }
+    .header__btn {
+        background-image: none;
+        padding: 0;
+    }
 }

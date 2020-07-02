@@ -67,3 +67,9 @@ $path-length: 157px; // Retrieved using SVG's getTotalLength()
     stroke-dashoffset: -($path-length - 1);
   }
 }
+
+@media (max-width: 767px) {
+  .preloader {
+    transform: rotate(90deg) scale(0.5)
+  }
+}

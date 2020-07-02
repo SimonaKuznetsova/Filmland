@@ -1,12 +1,12 @@
 import React from 'react'
 import Search from 'views/Search'
-import {HeaderBtn} from 'views/HeaderBtn'
+import {SignIn} from 'views/SignInBtn'
 
-export const Tools = () => {
+export const Tools = ({onHandleCloseMenu}) => {
     return (
         <div className='header__tools'>
-            <Search />
-            <HeaderBtn />
+            <Search onHandleCloseMenu={onHandleCloseMenu}/>
+            <SignIn onHandleCloseMenu={onHandleCloseMenu}/>
         </div>
     )
 }

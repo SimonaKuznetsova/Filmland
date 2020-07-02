@@ -10,6 +10,10 @@
         width: 100%;
     }
 
+    .logo {
+        display: none;
+    }
+
     &__nav {
         display: flex;
         align-items: center;
@@ -30,19 +34,13 @@
         display: flex;
     }
 
-    &__indicator {
-        height: 2px;
-        border-radius: 3px;
-        background-image: linear-gradient(to left, rgb(101, 115, 255),
-        rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231),
-         rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), 
-         rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184),
-          rgb(196, 108, 176), rgb(206, 107, 168));
-        position: absolute;
-        left: 0;
+    .nav-indicator {
         bottom: -20px;
-        width: 100%;
-        transition: .5s;
+    }
+
+    &__close,
+    &__open {
+        display: none;
     }
 }
 
@@ -78,5 +76,125 @@
         position: absolute;
         right: 40px;
         top: 9px;
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        padding: 10px 70px;
+
+        &__link {
+            font-size: 14px;
+        }
+
+        &__link-home {
+            margin-right: 15px;
+        }
+
+        .nav-indicator {
+            bottom: -10px;
+        }
+    }
+
+    .search {
+        &__input {
+            width: 200px;
+            padding: 6px 8px;
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 10px 50px;
+        flex-direction: column;
+
+        &__inner {
+            margin: 80px 0;
+        }
+
+        &__nav,
+        &__inner,
+        &__tools {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        &__nav-link {
+            display: inline-block;
+            color: white;
+            font-size: 25px;
+            margin-top: 20px;
+        }
+
+        &__link-home {
+            margin: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 5px;
+        }
+
+        .logo svg {
+            width: 23px;
+            height: auto;
+            right: 5px;
+            top: 3px;
+            position: relative;
+
+            transform: rotate(45deg)
+        }
+
+        .logo__text_middle {
+            position: absolute;
+            left: 129px;
+            color: black;
+        }
+
+        .logo__text {
+            z-index: 2;
+        }
+
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__close,
+        &__open {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .search {
+        // &__inner {
+        //     display: none;
+        // }
+        &__input {
+            margin-right: 0;
+            font-size: 12px;
+            width: 170px;
+        }
+
+        &__btn {
+            right: 10px;
+            top: 4px;
+        }
+
+        &__btn svg {
+            width: 15px;
+            height: 15px;
+        }
     }
 }
